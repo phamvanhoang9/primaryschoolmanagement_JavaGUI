@@ -17,6 +17,7 @@ public class Welcome extends JFrame {
     public Welcome() {
         initComponents();
         setSize(500, 400);
+        setLocationRelativeTo(null);
     }
 
     private void initComponents() {

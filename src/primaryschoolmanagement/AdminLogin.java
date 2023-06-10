@@ -12,6 +12,7 @@ public class AdminLogin extends JFrame {
     public AdminLogin() {
         initComponents();
         setSize(500, 400);
+        setLocationRelativeTo(null);
     }
 
     private void initComponents() {

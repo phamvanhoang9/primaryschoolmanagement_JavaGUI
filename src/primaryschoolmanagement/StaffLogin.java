@@ -13,6 +13,7 @@ public class StaffLogin extends JFrame {
     public StaffLogin() {
         initComponents();
         setSize(500, 400);
+        setLocationRelativeTo(null);
     }
 
     private void initComponents() {
