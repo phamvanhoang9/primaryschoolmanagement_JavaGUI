@@ -2,6 +2,10 @@ package primaryschoolmanagement;
 
 import javax.swing.*;
 
+/**
+ * @author steve hoang
+ */
+
 public class TeacherModule extends JFrame {
     public static void main(String[] args) {
         TeacherModule teacherModule = new TeacherModule();
