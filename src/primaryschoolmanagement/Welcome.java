@@ -46,6 +46,7 @@ public class Welcome extends JFrame {
         jLabel4.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("/primaryschoolmanagement/school.png"))));
 
         jButton1.setText("ADMIN");
+        jButton1.setCursor(new Cursor(Cursor.HAND_CURSOR));
         jButton1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 JButton1ActionPerformed(evt);
@@ -59,6 +60,7 @@ public class Welcome extends JFrame {
         });
 
         jButton2.setText("TEACHER");
+        jButton2.setCursor(new Cursor(Cursor.HAND_CURSOR));
         jButton2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 JButton2ActionPerformed(evt);
@@ -72,6 +74,7 @@ public class Welcome extends JFrame {
         });
 
         jButton3.setText("STAFF");
+        jButton3.setCursor(new Cursor(Cursor.HAND_CURSOR));
         jButton3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 JButton3ActionPerformed(evt);
