@@ -25,17 +25,35 @@ public class TeacherIdentity extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(300, 200);
         setLocationRelativeTo(null);
+        setResizable(false);
 
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(3, 1));
+        panel.setLayout(new GridLayout(4, 1));
 
-        JLabel title = new JLabel("Please enter your identity:");
-        title.setHorizontalAlignment(JLabel.CENTER);
+        JLabel back = new JLabel();
+        back.setForeground(new Color(255, 99, 55));
+        back.setText("Back");
+        back.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backMouseClicked(evt);
+            }
+
+            private void backMouseClicked(java.awt.event.MouseEvent evt) {
+                TeacherLogin teacherLogin = new TeacherLogin();
+                teacherLogin.setVisible(true);
+                dispose();
+            }
+        });
+
+        JLabel title = new JLabel("Please enter your ID:");
+//        title.setHorizontalAlignment(JLabel.CENTER);
 
         idField = new JTextField();
-        idField.setHorizontalAlignment(JTextField.CENTER);
+//        idField.setHorizontalAlignment(JTextField.CENTER);
 
         JButton submit = new JButton("Submit");
+        submit.setCursor(new Cursor(Cursor.HAND_CURSOR));
         submit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -51,6 +69,38 @@ public class TeacherIdentity extends JFrame {
             }
         });
 
+        GroupLayout layout = new GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(225, 225, 225)
+                    .addComponent(back))
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(50, 50, 50)
+                    .addComponent(title))
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(50, 50, 50)
+                    .addComponent(idField, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(175, 175, 175)
+                    .addComponent(submit))
+        );
+
+        layout.setVerticalGroup(
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(5, 5, 5)
+                    .addComponent(back)
+                    .addGap(25, 25, 25)
+                    .addComponent(title)
+                    .addGap(10, 10, 10)
+                    .addComponent(idField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addGap(25, 25, 25)
+                    .addComponent(submit))
+        );
+
+        panel.add(back);
         panel.add(title);
         panel.add(idField);
         panel.add(submit);
