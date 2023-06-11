@@ -60,8 +60,21 @@ public class TeacherLogin extends JFrame {
         });
         back.setForeground(new Color(255, 99, 55));
         back.setText("Back");
+        back.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        back.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                backMouseClicked(e);
+            }
+            private void backMouseClicked(MouseEvent e) {
+                Welcome welcome = new Welcome();
+                welcome.setVisible(true);
+                dispose();
+            }
+        });
 
         submit.setText("Submit");
+        submit.setCursor(new Cursor(Cursor.HAND_CURSOR));
         submit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
