@@ -58,7 +58,7 @@ public class TeacherLogin extends JFrame implements UserLogin {
 
             private void forgotPassMouseClicked(MouseEvent e) {
                 JOptionPane.showMessageDialog(null, "You need to reset password!");
-                TeacherIdentity teacherIdentity = new TeacherIdentity();
+                StaffIdentity teacherIdentity = new StaffIdentity();
                 teacherIdentity.setVisible(true);
                 dispose();
             }
@@ -186,7 +186,7 @@ public class TeacherLogin extends JFrame implements UserLogin {
     }
 
     public static void main(String[] args) {
-        AdminLogin teacherLogin = new AdminLogin();
+        StaffLogin teacherLogin = new StaffLogin();
         teacherLogin.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         teacherLogin.setVisible(true);
     }

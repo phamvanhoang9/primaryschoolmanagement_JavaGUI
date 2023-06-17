@@ -37,7 +37,7 @@ public class AdminIdentity extends JFrame {
             }
 
             private void backMouseClicked(java.awt.event.MouseEvent evt) {
-                AdminLogin adminLogin = new AdminLogin();
+                StaffLogin adminLogin = new StaffLogin();
                 adminLogin.setVisible(true);
                 dispose();
             }

@@ -12,7 +12,7 @@ import java.sql.*;
  * @author steve hoang
  */
 
-public class AdminLogin extends JFrame implements UserLogin {
+public class StaffLogin extends JFrame implements UserLogin {
     /**
      * Creates new form AdminLogin
      */
@@ -20,7 +20,7 @@ public class AdminLogin extends JFrame implements UserLogin {
     private JTextField userID;
     private JPasswordField pass;
 
-    public AdminLogin() {
+    public StaffLogin() {
         initComponents();
         setSize(400, 450);
         setLocationRelativeTo(null);
@@ -36,12 +36,12 @@ public class AdminLogin extends JFrame implements UserLogin {
         userID = new JTextField();
         pass = new JPasswordField();
 
-        setTitle("Admin Login");
+        setTitle("Staff Login");
         setResizable(false);
 
         jLabel1.setFont(new Font("Times New Roman", Font.BOLD, 18));
         jLabel1.setForeground(new Color(0, 200, 0));
-        jLabel1.setText("WELCOME ADMIN");
+        jLabel1.setText("WELCOME STAFF");
 
         jLabel2.setText("UserID:");
 
@@ -58,8 +58,8 @@ public class AdminLogin extends JFrame implements UserLogin {
 
             private void forgotPassMouseClicked(MouseEvent e) {
                 JOptionPane.showMessageDialog(null, "You need to reset password!");
-                AdminIdentity adminIdentity = new AdminIdentity();
-                adminIdentity.setVisible(true);
+                StaffIdentity staffIdentity = new StaffIdentity();
+                staffIdentity.setVisible(true);
                 dispose();
             }
         });

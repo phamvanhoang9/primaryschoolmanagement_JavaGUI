@@ -53,7 +53,7 @@ public class Welcome extends JFrame {
             }
 
             private void JButton1ActionPerformed(ActionEvent evt) {
-                AdminLogin adminLogin = new AdminLogin();
+                StaffLogin adminLogin = new StaffLogin();
                 adminLogin.setVisible(true);
                 dispose();
             }
@@ -67,7 +67,7 @@ public class Welcome extends JFrame {
             }
 
             private void JButton2ActionPerformed(ActionEvent evt) {
-                AdminLogin teacherLogin = new AdminLogin();
+                StaffLogin teacherLogin = new StaffLogin();
                 teacherLogin.setVisible(true);
                 dispose();
             }
