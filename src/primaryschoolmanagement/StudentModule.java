@@ -6,11 +6,11 @@ import javax.swing.*;
  * @author steve hoang
  */
 
-public class TeacherModule extends JFrame {
+public class StudentModule extends JFrame{
     /**
-     * Creates new form TeacherModule
+     * Creates new form StaffModule
      */
-    public TeacherModule() {
+    public StudentModule() {
         initComponents();
         setSize(500, 400);
         setLocationRelativeTo(null);
@@ -18,12 +18,12 @@ public class TeacherModule extends JFrame {
 
     private void initComponents() {
 
-        setTitle("Teacher Module");
+        setTitle("Student Module");
         setResizable(false);
     }
     public static void main(String[] args) {
-        TeacherModule teacherModule = new TeacherModule();
-        teacherModule.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        teacherModule.setVisible(true);
+        StudentModule studentModule = new StudentModule();
+        studentModule.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        studentModule.setVisible(true);
     }
 }

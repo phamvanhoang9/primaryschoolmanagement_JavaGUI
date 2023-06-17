@@ -11,14 +11,14 @@ import java.util.Random;
  * @author steve hoang
  */
 
-public class TeacherIdentity extends JFrame {
+public class AdminIdentity extends JFrame {
     /**
-     * Creates new form TeacherIdentity
+     * Creates new form AdminIdentity
      */
     private final JTextField idField;
 
-    public TeacherIdentity() {
-        setTitle("Teacher identity");
+    public AdminIdentity() {
+        setTitle("Admin identity");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(300, 200);
         setLocationRelativeTo(null);
@@ -37,8 +37,8 @@ public class TeacherIdentity extends JFrame {
             }
 
             private void backMouseClicked(java.awt.event.MouseEvent evt) {
-                AdminLogin teacherLogin = new AdminLogin();
-                teacherLogin.setVisible(true);
+                AdminLogin adminLogin = new AdminLogin();
+                adminLogin.setVisible(true);
                 dispose();
             }
         });
@@ -142,7 +142,7 @@ public class TeacherIdentity extends JFrame {
     private boolean checkUserExistence(String userID, Connection connection) {
         try {
             Statement statement = connection.createStatement();
-            String query = "SELECT * FROM teacher_login WHERE userID = '" + userID + "'";
+            String query = "SELECT * FROM admin_login WHERE userID = '" + userID + "'";
             ResultSet resultSet = statement.executeQuery(query);
             return resultSet.next();
         } catch (SQLException e) {
@@ -153,7 +153,7 @@ public class TeacherIdentity extends JFrame {
 
     private void updatePassword(String userID, String newPassword, Connection conn) throws SQLException {
         // Update the user's password in the database
-        String query = "UPDATE teacher_login SET password = ? WHERE userID = ?";
+        String query = "UPDATE admin_login SET password = ? WHERE userID = ?";
         PreparedStatement pstmt = conn.prepareStatement(query);
         pstmt.setString(1, newPassword);
         pstmt.setString(2, userID);
@@ -171,8 +171,8 @@ public class TeacherIdentity extends JFrame {
     }
 
     public static void main(String[] args) {
-        TeacherIdentity teacherIdentity = new TeacherIdentity();
-        teacherIdentity.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        teacherIdentity.setVisible(true);
+        AdminIdentity adminIdentity = new AdminIdentity();
+        adminIdentity.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        adminIdentity.setVisible(true);
     }
 }

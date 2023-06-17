@@ -12,7 +12,7 @@ import java.sql.*;
  * @author steve hoang
  */
 
-public class TeacherLogin extends JFrame implements UserLogin {
+public class AccountantLogin extends JFrame implements UserLogin{
     /**
      * Creates new form TeacherLogin
      */
@@ -20,7 +20,7 @@ public class TeacherLogin extends JFrame implements UserLogin {
     private JTextField userID;
     private JPasswordField pass;
 
-    public TeacherLogin() {
+    public AccountantLogin() {
         initComponents();
         setSize(400, 450);
         setLocationRelativeTo(null);
@@ -36,12 +36,12 @@ public class TeacherLogin extends JFrame implements UserLogin {
         userID = new JTextField();
         pass = new JPasswordField();
 
-        setTitle("Teacher Login");
+        setTitle("Staff Login");
         setResizable(false);
 
         jLabel1.setFont(new Font("Times New Roman", Font.BOLD, 18));
         jLabel1.setForeground(new Color(0, 200, 0));
-        jLabel1.setText("WELCOME TEACHER");
+        jLabel1.setText("WELCOME STAFF");
 
         jLabel2.setText("UserID:");
 
@@ -55,15 +55,13 @@ public class TeacherLogin extends JFrame implements UserLogin {
             public void mouseClicked(MouseEvent e) {
                 forgotPassMouseClicked(e);
             }
-
             private void forgotPassMouseClicked(MouseEvent e) {
                 JOptionPane.showMessageDialog(null, "You need to reset password!");
-                TeacherIdentity teacherIdentity = new TeacherIdentity();
+                AccountantIdentity teacherIdentity = new AccountantIdentity();
                 teacherIdentity.setVisible(true);
                 dispose();
             }
         });
-
         back.setForeground(new Color(255, 99, 55));
         back.setText("Back");
         back.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -72,7 +70,6 @@ public class TeacherLogin extends JFrame implements UserLogin {
             public void mouseClicked(MouseEvent e) {
                 backMouseClicked(e);
             }
-
             private void backMouseClicked(MouseEvent e) {
                 Welcome welcome = new Welcome();
                 welcome.setVisible(true);
@@ -104,7 +101,6 @@ public class TeacherLogin extends JFrame implements UserLogin {
                 }
             }
         });
-
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -162,7 +158,7 @@ public class TeacherLogin extends JFrame implements UserLogin {
         try {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/primary_school_management", "root", "999");
             Statement stmt = conn.createStatement();
-            String query = "SELECT * FROM teacher_login WHERE userID = '" + user + "' AND password = '" + password + "'";
+            String query = "SELECT * FROM accountant_login WHERE userID = '" + user + "' AND password = '" + password + "'";
             ResultSet rs = stmt.executeQuery(query);
 
             return rs.next();
@@ -173,21 +169,21 @@ public class TeacherLogin extends JFrame implements UserLogin {
         return false;
     }
 
-    @Override
     public void showErrorMessage(String message) {
-        JOptionPane.showMessageDialog(null, message);
+        JOptionPane.showMessageDialog(this, message);
     }
 
-    @Override
     public void loginSuccessful() {
-        TeacherModule teacherModule = new TeacherModule();
-        teacherModule.setVisible(true);
+        AccountantModule accountantModule = new AccountantModule();
+        accountantModule.setVisible(true);
         dispose();
     }
 
     public static void main(String[] args) {
-        AdminLogin teacherLogin = new AdminLogin();
-        teacherLogin.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        teacherLogin.setVisible(true);
+        AccountantLogin accountantLogin = new AccountantLogin();
+        accountantLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        accountantLogin.setVisible(true);
     }
 }
+
+

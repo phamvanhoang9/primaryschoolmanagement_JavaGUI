@@ -16,7 +16,7 @@ public class Welcome extends JFrame {
      */
     public Welcome() {
         initComponents();
-        setSize(500, 400);
+        setSize(500, 450);
         setLocationRelativeTo(null);
     }
 
@@ -67,7 +67,7 @@ public class Welcome extends JFrame {
             }
 
             private void JButton2ActionPerformed(ActionEvent evt) {
-                TeacherLogin teacherLogin = new TeacherLogin();
+                AdminLogin teacherLogin = new AdminLogin();
                 teacherLogin.setVisible(true);
                 dispose();
             }
@@ -81,7 +81,7 @@ public class Welcome extends JFrame {
             }
 
             private void JButton3ActionPerformed(ActionEvent evt) {
-                StaffLogin staffLogin = new StaffLogin();
+                AccountantLogin staffLogin = new AccountantLogin();
                 staffLogin.setVisible(true);
                 dispose();
             }

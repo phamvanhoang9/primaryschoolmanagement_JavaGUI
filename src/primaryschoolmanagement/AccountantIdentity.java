@@ -4,21 +4,24 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Random;
 
 /**
  * @author steve hoang
  */
 
-public class TeacherIdentity extends JFrame {
+public class AccountantIdentity extends JFrame {
     /**
      * Creates new form TeacherIdentity
      */
     private final JTextField idField;
 
-    public TeacherIdentity() {
-        setTitle("Teacher identity");
+    public AccountantIdentity() {
+        setTitle("Accountant identity");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(300, 200);
         setLocationRelativeTo(null);
@@ -37,8 +40,8 @@ public class TeacherIdentity extends JFrame {
             }
 
             private void backMouseClicked(java.awt.event.MouseEvent evt) {
-                AdminLogin teacherLogin = new AdminLogin();
-                teacherLogin.setVisible(true);
+                AccountantLogin accountantLogin = new AccountantLogin();
+                accountantLogin.setVisible(true);
                 dispose();
             }
         });
@@ -56,15 +59,10 @@ public class TeacherIdentity extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String userID = idField.getText();
                 String newPassword = generateNewPassword();
+                showNewPassword(userID, newPassword);
                 try {
                     Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/primary_school_management", "root", "999");
-                    boolean userExists = checkUserExistence(userID, connection);
-                    if (userExists) {
-                        updatePassword(userID, newPassword, connection);
-                        showNewPassword(userID, newPassword);
-                    } else {
-                        showErrorMessage();
-                    }
+                    updatePassword(userID, newPassword, connection);
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
@@ -74,32 +72,32 @@ public class TeacherIdentity extends JFrame {
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(225, 225, 225)
-                    .addComponent(back))
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(50, 50, 50)
-                    .addComponent(title))
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(50, 50, 50)
-                    .addComponent(idField, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(175, 175, 175)
-                    .addComponent(submit))
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(225, 225, 225)
+                                .addComponent(back))
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(50, 50, 50)
+                                .addComponent(title))
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(50, 50, 50)
+                                .addComponent(idField, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(175, 175, 175)
+                                .addComponent(submit))
         );
 
         layout.setVerticalGroup(
-            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(5, 5, 5)
-                    .addComponent(back)
-                    .addGap(25, 25, 25)
-                    .addComponent(title)
-                    .addGap(10, 10, 10)
-                    .addComponent(idField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                    .addGap(25, 25, 25)
-                    .addComponent(submit))
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addComponent(back)
+                                .addGap(25, 25, 25)
+                                .addComponent(title)
+                                .addGap(10, 10, 10)
+                                .addComponent(idField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                .addGap(25, 25, 25)
+                                .addComponent(submit))
         );
 
         panel.add(back);
@@ -138,22 +136,9 @@ public class TeacherIdentity extends JFrame {
         return newPassword.toString();
     }
 
-
-    private boolean checkUserExistence(String userID, Connection connection) {
-        try {
-            Statement statement = connection.createStatement();
-            String query = "SELECT * FROM teacher_login WHERE userID = '" + userID + "'";
-            ResultSet resultSet = statement.executeQuery(query);
-            return resultSet.next();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
     private void updatePassword(String userID, String newPassword, Connection conn) throws SQLException {
         // Update the user's password in the database
-        String query = "UPDATE teacher_login SET password = ? WHERE userID = ?";
+        String query = "UPDATE accountant_login SET password = ? WHERE userID = ?";
         PreparedStatement pstmt = conn.prepareStatement(query);
         pstmt.setString(1, newPassword);
         pstmt.setString(2, userID);
@@ -165,14 +150,9 @@ public class TeacherIdentity extends JFrame {
         JOptionPane.showMessageDialog(null, message, "Password Reset", JOptionPane.INFORMATION_MESSAGE);
     }
 
-
-    private void showErrorMessage() {
-        JOptionPane.showMessageDialog(null, "Wrong userID");
-    }
-
     public static void main(String[] args) {
-        TeacherIdentity teacherIdentity = new TeacherIdentity();
-        teacherIdentity.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        teacherIdentity.setVisible(true);
+        AccountantIdentity accountantIdentity = new AccountantIdentity();
+        accountantIdentity.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        accountantIdentity.setVisible(true);
     }
 }
