@@ -36,18 +36,18 @@ public class AccountantLogin extends JFrame implements UserLogin{
         userID = new JTextField();
         pass = new JPasswordField();
 
-        setTitle("Staff Login");
+        setTitle("Accountant Login");
         setResizable(false);
 
         jLabel1.setFont(new Font("Times New Roman", Font.BOLD, 18));
         jLabel1.setForeground(new Color(0, 200, 0));
-        jLabel1.setText("WELCOME STAFF");
+        jLabel1.setText("WELCOME ACCOUNTANT");
 
         jLabel2.setText("UserID:");
 
         jLabel3.setText("Password:");
 
-        forgotPass.setForeground(new Color(255, 99, 55));
+        forgotPass.setForeground(Color.RED);
         forgotPass.setText("Forgot Password?");
         forgotPass.setCursor(new Cursor(Cursor.HAND_CURSOR));
         forgotPass.addMouseListener(new MouseAdapter() {
@@ -62,8 +62,8 @@ public class AccountantLogin extends JFrame implements UserLogin{
                 dispose();
             }
         });
-        back.setForeground(new Color(255, 99, 55));
-        back.setText("Back");
+        back.setForeground(Color.RED);
+        back.setText("BACK");
         back.setCursor(new Cursor(Cursor.HAND_CURSOR));
         back.addMouseListener(new MouseAdapter() {
             @Override
@@ -174,9 +174,9 @@ public class AccountantLogin extends JFrame implements UserLogin{
     }
 
     public void loginSuccessful() {
-        AccountantModule accountantModule = new AccountantModule();
-        accountantModule.setVisible(true);
-        dispose();
+//        AccountantModule accountantModule = new AccountantModule();
+//        accountantModule.setVisible(true);
+//        dispose();
     }
 
     public static void main(String[] args) {

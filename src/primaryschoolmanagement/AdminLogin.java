@@ -47,7 +47,7 @@ public class AdminLogin extends JFrame implements UserLogin {
 
         jLabel3.setText("Password:");
 
-        forgotPass.setForeground(new Color(255, 99, 55));
+        forgotPass.setForeground(Color.RED);
         forgotPass.setText("Forgot Password?");
         forgotPass.setCursor(new Cursor(Cursor.HAND_CURSOR));
         forgotPass.addMouseListener(new MouseAdapter() {
@@ -64,8 +64,8 @@ public class AdminLogin extends JFrame implements UserLogin {
             }
         });
 
-        back.setForeground(new Color(255, 99, 55));
-        back.setText("Back");
+        back.setForeground(Color.RED);
+        back.setText("BACK");
         back.setCursor(new Cursor(Cursor.HAND_CURSOR));
         back.addMouseListener(new MouseAdapter() {
             @Override
@@ -186,7 +186,7 @@ public class AdminLogin extends JFrame implements UserLogin {
     }
 
     public static void main(String[] args) {
-        StaffLogin adminLogin = new StaffLogin();
+        AdminLogin adminLogin = new AdminLogin();
         adminLogin.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         adminLogin.setVisible(true);
     }

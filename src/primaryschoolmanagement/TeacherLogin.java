@@ -47,7 +47,7 @@ public class TeacherLogin extends JFrame implements UserLogin {
 
         jLabel3.setText("Password:");
 
-        forgotPass.setForeground(new Color(255, 99, 55));
+        forgotPass.setForeground(Color.RED);
         forgotPass.setText("Forgot Password?");
         forgotPass.setCursor(new Cursor(Cursor.HAND_CURSOR));
         forgotPass.addMouseListener(new MouseAdapter() {
@@ -58,14 +58,14 @@ public class TeacherLogin extends JFrame implements UserLogin {
 
             private void forgotPassMouseClicked(MouseEvent e) {
                 JOptionPane.showMessageDialog(null, "You need to reset password!");
-                StaffIdentity teacherIdentity = new StaffIdentity();
+                TeacherIdentity teacherIdentity = new TeacherIdentity();
                 teacherIdentity.setVisible(true);
                 dispose();
             }
         });
 
-        back.setForeground(new Color(255, 99, 55));
-        back.setText("Back");
+        back.setForeground(Color.RED);
+        back.setText("BACK");
         back.setCursor(new Cursor(Cursor.HAND_CURSOR));
         back.addMouseListener(new MouseAdapter() {
             @Override
@@ -180,13 +180,24 @@ public class TeacherLogin extends JFrame implements UserLogin {
 
     @Override
     public void loginSuccessful() {
-        TeacherModule teacherModule = new TeacherModule();
+        Teacher teacherModule = new Teacher();
         teacherModule.setVisible(true);
         dispose();
     }
 
     public static void main(String[] args) {
-        StaffLogin teacherLogin = new StaffLogin();
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException | IllegalAccessException | UnsupportedLookAndFeelException |
+                 InstantiationException ex) {
+            java.util.logging.Logger.getLogger(ReportCard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        TeacherLogin teacherLogin = new TeacherLogin();
         teacherLogin.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         teacherLogin.setVisible(true);
     }

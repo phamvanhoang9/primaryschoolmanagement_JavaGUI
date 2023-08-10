@@ -34,14 +34,12 @@ public class Welcome extends JFrame {
         setResizable(false);
 
         jLabel1.setFont(new Font("Times New Roman", Font.BOLD, 24));
-        jLabel1.setForeground(new Color(153, 0, 0));
+        jLabel1.setForeground(new Color(200, 0, 0));
         jLabel1.setText("PRIMARY SCHOOL MANAGEMENT");
 
         jLabel2.setFont(new Font("Times New Roman", Font.BOLD, 18));
-        jLabel2.setForeground(new Color(200, 153, 0));
+        jLabel2.setForeground(new Color(0, 200, 0));
         jLabel2.setText("WELCOME");
-
-        jLabel3.setText("Please select your role:");
 
         jLabel4.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("/primaryschoolmanagement/school.png"))));
 
@@ -53,7 +51,7 @@ public class Welcome extends JFrame {
             }
 
             private void JButton1ActionPerformed(ActionEvent evt) {
-                StaffLogin adminLogin = new StaffLogin();
+                AdminLogin adminLogin = new AdminLogin();
                 adminLogin.setVisible(true);
                 dispose();
             }
@@ -67,7 +65,7 @@ public class Welcome extends JFrame {
             }
 
             private void JButton2ActionPerformed(ActionEvent evt) {
-                StaffLogin teacherLogin = new StaffLogin();
+                TeacherLogin teacherLogin = new TeacherLogin();
                 teacherLogin.setVisible(true);
                 dispose();
             }
@@ -102,9 +100,6 @@ public class Welcome extends JFrame {
                         .addGap(200, 200, 200)
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(181, 181, 181)
-                        .addComponent(jLabel3))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(201, 201, 201)
                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -121,9 +116,7 @@ public class Welcome extends JFrame {
                     .addComponent(jLabel1)
                     .addGap(18, 18, 18)
                     .addComponent(jLabel2)
-                    .addGap(18, 18, 18)
-                    .addComponent(jLabel3)
-                    .addGap(18, 18, 18)
+                    .addGap(32, 32, 32)
                     .addComponent(jButton1)
                     .addGap(18, 18, 18)
                     .addComponent(jButton2)
@@ -136,6 +129,17 @@ public class Welcome extends JFrame {
     }
 
     public static void main(String[] args) {
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException | IllegalAccessException | UnsupportedLookAndFeelException |
+                 InstantiationException ex) {
+            java.util.logging.Logger.getLogger(ReportCard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
         EventQueue.invokeLater(() -> new Welcome().setVisible(true));
     }
 }

@@ -28,8 +28,8 @@ public class TeacherIdentity extends JFrame {
         panel.setLayout(new GridLayout(4, 1));
 
         JLabel back = new JLabel();
-        back.setForeground(new Color(255, 99, 55));
-        back.setText("Back");
+        back.setForeground(Color.RED);
+        back.setText("BACK");
         back.setCursor(new Cursor(Cursor.HAND_CURSOR));
         back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -37,7 +37,7 @@ public class TeacherIdentity extends JFrame {
             }
 
             private void backMouseClicked(java.awt.event.MouseEvent evt) {
-                StaffLogin teacherLogin = new StaffLogin();
+                TeacherLogin teacherLogin = new TeacherLogin();
                 teacherLogin.setVisible(true);
                 dispose();
             }
@@ -171,7 +171,18 @@ public class TeacherIdentity extends JFrame {
     }
 
     public static void main(String[] args) {
-        StaffIdentity teacherIdentity = new StaffIdentity();
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException | IllegalAccessException | UnsupportedLookAndFeelException |
+                 InstantiationException ex) {
+            java.util.logging.Logger.getLogger(ReportCard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        TeacherLogin teacherIdentity = new TeacherLogin();
         teacherIdentity.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         teacherIdentity.setVisible(true);
     }

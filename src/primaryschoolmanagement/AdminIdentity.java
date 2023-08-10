@@ -28,8 +28,8 @@ public class AdminIdentity extends JFrame {
         panel.setLayout(new GridLayout(4, 1));
 
         JLabel back = new JLabel();
-        back.setForeground(new Color(255, 99, 55));
-        back.setText("Back");
+        back.setForeground(Color.RED);
+        back.setText("BACK");
         back.setCursor(new Cursor(Cursor.HAND_CURSOR));
         back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -37,7 +37,7 @@ public class AdminIdentity extends JFrame {
             }
 
             private void backMouseClicked(java.awt.event.MouseEvent evt) {
-                StaffLogin adminLogin = new StaffLogin();
+                AdminLogin adminLogin = new AdminLogin();
                 adminLogin.setVisible(true);
                 dispose();
             }
